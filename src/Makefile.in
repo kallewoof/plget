@@ -8,5 +8,5 @@ plget:	plget.c
 install:plget
 	cp plget /usr/local/bin
 
-clear:
+clean:
 	rm plget *~
