@@ -3,7 +3,13 @@ plget
 
 PList parser for shell script processing
 
-There is no autoconfig. You will need to point to libxml2 manually in the Makefile (if you brew install libxml2 it will probably be right).
+There is a crude configure.sh to determine which libxml2 to use. To compile, do
+```bash
+$ cd src
+$ ./configure.sh
+$ make
+$ make install # optional -- skip if you don't want a /usr/local/bin/plget binary
+```
 
 Example:
 ```bash
