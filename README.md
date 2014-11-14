@@ -37,3 +37,45 @@ $ runtime=`plget example/device.plist runtime`
 $ echo The runtime: $runtime
 The runtime: com.apple.CoreSimulator.SimRuntime.iOS-8-0
 ```
+
+To get a list of device types and runtimes for all devices in the ~/Library/Developer/CoreSimulator/Devices folder, you can do
+```bash
+$ cd ~/Library/Developer/CoreSimulator/Devices
+$ for i in *; do 
+devtype=`plget $i/device.plist deviceType`
+runtime=`plget $i/device.plist runtime`
+devtype=${devtype:38} # trim out "com.apple.CoreSimulator.SimDeviceType."
+runtime=${runtime:35} # trim out "com.apple.CoreSimulator.SimRuntime."
+echo "$devtype $runtime"
+done
+```
+
+which for me returns
+```bash
+iPhone-5s iOS-8-1
+iPad-Retina iOS-8-0
+iPad-2 iOS-8-1
+iPad-Air iOS-8-0
+iPad-Retina iOS-8-1
+iPad-Retina iOS-7-1
+Resizable-iPhone iOS-8-0
+Resizable-iPhone iOS-8-1
+iPhone-5 iOS-7-1
+iPad-2 iOS-8-0
+iPhone-4s iOS-7-1
+iPad-Air iOS-7-1
+iPhone-4s iOS-8-1
+iPhone-6 iOS-8-0
+Resizable-iPad iOS-8-0
+iPhone-5s iOS-7-1
+iPhone-6 iOS-8-1
+iPhone-5s iOS-8-0
+iPhone-6-Plus iOS-8-0
+iPad-2 iOS-7-1
+iPhone-6-Plus iOS-8-1
+iPhone-5 iOS-8-1
+iPhone-5 iOS-8-0
+Resizable-iPad iOS-8-1
+iPhone-4s iOS-8-0
+iPad-Air iOS-8-1
+```
