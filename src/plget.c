@@ -15,7 +15,7 @@ void freeValue();
 int main(int argc, const char **argv)
 {
     if (argc != 3) {
-	fprintf(stderr, "%dsyntax: %s <plist> <property to read>\n", argc, argv[0]);
+	fprintf(stderr, "syntax: %s <plist> <property to read>\n", argv[0]);
 	return 1;
     }
 
