@@ -65,7 +65,7 @@ $ plget example/applicationState.plist com.apple.mobileslideshow/SBApplicationAl
 7
 ```
 
-You can use the wildcard component * to match all keys. This changes the output to (1) print out all encountered keys (wildcard only) with a * prefix, and will print out multiple (if encountered) values.
+You can use the wildcard component * to match all keys. This changes the output to print out all encountered keys (wildcard only) with a * prefix, and will print out multiple (if encountered) values.
 ```bash
 $ plget example/applicationState.plist "*/compatibilityInfo/sandboxPath"
 *com.mycompany.myapp
