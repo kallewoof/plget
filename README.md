@@ -50,32 +50,31 @@ echo "$devtype $runtime"
 done
 ```
 
-which for me returns
+which may return e.g.
 ```bash
 iPhone-5s iOS-8-1
 iPad-Retina iOS-8-0
 iPad-2 iOS-8-1
 iPad-Air iOS-8-0
-iPad-Retina iOS-8-1
-iPad-Retina iOS-7-1
-Resizable-iPhone iOS-8-0
-Resizable-iPhone iOS-8-1
-iPhone-5 iOS-7-1
-iPad-2 iOS-8-0
-iPhone-4s iOS-7-1
-iPad-Air iOS-7-1
-iPhone-4s iOS-8-1
-iPhone-6 iOS-8-0
-Resizable-iPad iOS-8-0
-iPhone-5s iOS-7-1
-iPhone-6 iOS-8-1
-iPhone-5s iOS-8-0
-iPhone-6-Plus iOS-8-0
-iPad-2 iOS-7-1
-iPhone-6-Plus iOS-8-1
-iPhone-5 iOS-8-1
-iPhone-5 iOS-8-0
-Resizable-iPad iOS-8-1
-iPhone-4s iOS-8-0
-iPad-Air iOS-8-1
+...
+```
+
+You can use multi component paths:
+```bash
+$ plget example/applicationState.plist com.apple.mobileslideshow/SBApplicationAllSupportedNotificationTypes
+7
+```
+
+You can use the wildcard component * to match all keys. This changes the output to (1) print out all encountered keys (wildcard only) with a * prefix, and will print out multiple (if encountered) values.
+```bash
+$ plget example/applicationState.plist "*/compatibilityInfo/sandboxPath"
+*com.mycompany.myapp
+/Users/me/Library/Developer/CoreSimulator/Devices/129FE671-F8D2-446D-9B69-DE56F1AC80B9/data/Containers/Data/Application/69F7E3EF-B450-4840-826D-3830E79C247A
+*com.mycompany.otherapp
+/Users/me/Library/Developer/CoreSimulator/Devices/129FE671-F8D2-446D-9B69-DE56F1AC80B9/data/Containers/Data/Application/473F8259-EE11-4417-B04E-6FBA7BF2ED05
+*com.apple.mobilecal
+*com.apple.mobilesafari
+*com.apple.mobileslideshow
+*org.cocoapods.demo.pajdeg
+/Users/me/Library/Developer/CoreSimulator/Devices/129FE671-F8D2-446D-9B69-DE56F1AC80B9/data/Containers/Data/Application/C3069623-D55D-462C-82E0-E896C942F7DE
 ```
