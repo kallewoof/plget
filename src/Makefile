@@ -5,10 +5,10 @@ CC=gcc
 all:	plget
 
 plget:	plget.c
-	$(CC) -g plget.c -o plget $(LDFLAGS) $(CPPFLAGS)
+	$(CC) plget.c -o plget $(LDFLAGS) $(CPPFLAGS)
 
 install:plget
 	cp plget /usr/local/bin
 
-clear:
+clean:
 	rm plget *~

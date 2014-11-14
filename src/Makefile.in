@@ -9,4 +9,4 @@ install:plget
 	cp plget /usr/local/bin
 
 clean:
-	rm plget *~
+	rm -rf plget plget.dSYM *~
