@@ -16,7 +16,7 @@ if [ -d "/usr/local/opt/libxml2/lib" ] && [ -d "/usr/local/opt/libxml2/include/l
     echo -n -e "LDFLAGS=-lxml2 -L/usr/local/opt/libxml2/lib\nCPPFLAGS=-I/usr/local/opt/libxml2/include/libxml2\n" > Makefile
 else
     echo "built-in"
-    echo -n -e "LDFLAGS=-lxml2\nCPPFLAGS=\n" > Makefile
+    echo -n -e "LDFLAGS=-lxml2 -I/usr/include/libxml2\nCPPFLAGS=\n" > Makefile
 fi
 
 cat Makefile.in >> Makefile
