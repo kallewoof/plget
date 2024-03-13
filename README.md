@@ -1,5 +1,4 @@
 # plget
-=====
 A very lightweight handy utility for parsing Apple propery list files (PLIST).
 
 
