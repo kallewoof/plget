@@ -1,17 +1,55 @@
-plget
+# plget
 =====
+A very lightweight handy utility for parsing Apple propery list files (PLIST).
 
-PList parser for shell script processing
 
-There is a crude configure.sh to determine which libxml2 to use. To compile, do
+## Preparing for building
+
+*Required dependencies: `libxml2`, `gcc`, `make`*
+
+### Windows
+- Install [MSYS2](https://www.msys2.org/)
+- Run the MSYS2 environment then proccedd to Install the required packages:
 ```bash
+$ pacman -S gcc \
+          git \
+          make \
+          libxml2-devel
+```
+
+### Linux
+- Install the required packages:
+```
+sudo apt-get install \
+          git \
+          libxml2 \
+          automake
+```
+
+
+### MacOS
+- Install Xcode command line tools and [Homebrew](https://brew.sh/)
+- Then with brew install the required packages:
+```
+brew install libxml2 automake
+```
+
+
+## Compiling
+- There is a crude configure.sh to determine which libxml2 to use. To compile, do
+- After you install the required packages, then proceed this way:
+```bash
+$ git clone https://github.com/kallewoof/plget
 $ cd src
 $ ./configure.sh
 $ make
 $ make install # optional -- skip if you don't want a /usr/local/bin/plget binary
 ```
 
-Example:
+
+## Usage
+
+- Example:
 ```bash
 $ cat example/device.plist
 <?xml version="1.0" encoding="UTF-8"?>
@@ -38,7 +76,7 @@ $ echo The runtime: $runtime
 The runtime: com.apple.CoreSimulator.SimRuntime.iOS-8-0
 ```
 
-To get a list of device types and runtimes for all devices in the ~/Library/Developer/CoreSimulator/Devices folder, you can do
+* To get a list of device types and runtimes for all devices in the ~/Library/Developer/CoreSimulator/Devices folder, you can do
 ```bash
 $ cd ~/Library/Developer/CoreSimulator/Devices
 $ for i in *; do 
@@ -50,22 +88,21 @@ echo "$devtype $runtime"
 done
 ```
 
-which may return e.g.
+* which may return e.g.
 ```bash
 iPhone-5s iOS-8-1
 iPad-Retina iOS-8-0
 iPad-2 iOS-8-1
 iPad-Air iOS-8-0
-...
 ```
 
-You can use multi component paths:
+* You can use multi component paths:
 ```bash
 $ plget example/applicationState.plist com.apple.mobileslideshow/SBApplicationAllSupportedNotificationTypes
 7
 ```
 
-You can use the wildcard component * to match all keys. This changes the output to print out all encountered keys (wildcard only) with a * prefix, and will print out multiple (if encountered) values.
+* You can use the wildcard component * to match all keys. This changes the output to print out all encountered keys (wildcard only) with a * prefix, and will print out multiple (if encountered) values.
 ```bash
 $ plget example/applicationState.plist "*/compatibilityInfo/sandboxPath"
 *com.mycompany.myapp
