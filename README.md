@@ -17,12 +17,18 @@ $ pacman -S gcc \
 ```
 
 ### Linux
+- Update the packages:
+```shell
+sudo apt-get update
+```
 - Install the required packages:
 ```
-sudo apt-get install \
+sudo apt install \
+          gcc \
           git \
           libxml2 \
-          automake
+          libxml2-dev \
+          make
 ```
 
 
