@@ -14,6 +14,9 @@ echo -n -e "libxml2: "
 if [ -d "/usr/local/opt/libxml2/lib" ] && [ -d "/usr/local/opt/libxml2/include/libxml2" ]; then
     echo "keg-only brew"
     echo -n -e "LDFLAGS=-lxml2 -L/usr/local/opt/libxml2/lib\nCPPFLAGS=-I/usr/local/opt/libxml2/include/libxml2\n" > Makefile
+elif [[ "$PREFIX" = *'com.termux'* ]] || [ -d "$PREFIX/include/libxml2" ]; then
+    echo "termux-android"
+    echo -n -e "LDFLAGS=-lxml2 -I$PREFIX/include/libxml2\nCPPFLAGS=\n" > Makefile
 else
     echo "built-in"
     echo -n -e "LDFLAGS=-lxml2 -I/usr/include/libxml2\nCPPFLAGS=\n" > Makefile
